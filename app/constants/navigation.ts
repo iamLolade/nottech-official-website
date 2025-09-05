@@ -3,11 +3,11 @@ import { NavItem } from '../types';
 export const NAV_ITEMS: NavItem[] = [
   {
     title: 'Home',
-    href: '/',
+    href: '/#home',
   },
   {
     title: 'About Us',
-    href: '/about',
+    href: '/#about',
   },
   {
     title: 'Services',

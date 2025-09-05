@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[calc(100vh-5rem)] flex items-center pt-16 sm:pt-20 overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-500">
+    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center pt-16 sm:pt-20 overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-500">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -75,7 +75,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative h-[400px] md:h-[500px]">
+            <div className="relative h-[300px] md:h-[400px]">
               <Image
                 src="/images/vector/undraw_vibe-coding_mjme.svg"
                 alt="Technology Innovation"
@@ -117,18 +117,53 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 lg:mt-20 text-center"
+          className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 lg:mt-20"
         >
           {[
-            { number: '274+', label: 'Clients' },
-            { number: '421+', label: 'Projects' },
-            { number: '1,364+', label: 'Support Hours' },
-            { number: '18+', label: 'Team Members' },
+            { 
+              number: '274+', 
+              label: 'Clients',
+              description: 'Trusted by businesses'
+            },
+            { 
+              number: '421+', 
+              label: 'Projects',
+              description: 'Successfully delivered'
+            },
+            { 
+              number: '1,364+', 
+              label: 'Support Hours',
+              description: 'Dedicated assistance'
+            },
+            { 
+              number: '18+', 
+              label: 'Team Members',
+              description: 'Expert professionals'
+            },
           ].map((stat, index) => (
-            <div key={index} className="p-4 sm:p-5 lg:p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#D56649] mb-1 sm:mb-2">{stat.number}</h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">{stat.label}</p>
-            </div>
+            <motion.div
+              key={index}
+              className="group relative p-6 sm:p-8 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-gray-100 dark:border-gray-700 transition-all duration-300 shadow-md hover:shadow-xl"
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <div className="text-center">
+                <motion.h3 
+                  className="text-3xl sm:text-4xl font-bold text-[#D56649] mb-2"
+                  initial={{ scale: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  {stat.number}
+                </motion.h3>
+                <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-1 tracking-wide">
+                  {stat.label}
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 opacity-70 group-hover:opacity-90 transition-opacity">
+                  {stat.description}
+                </p>
+              </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>

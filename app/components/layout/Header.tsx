@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { scrollToElement } from '@/app/utils/smoothScroll';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_ITEMS } from '@/app/constants/navigation';
@@ -49,6 +50,12 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={(e) => {
+                  if (item.href.startsWith('/#')) {
+                    e.preventDefault();
+                    scrollToElement(item.href.substring(2));
+                  }
+                }}
                 className={`text-medium font-semibold transition-all hover:text-[#D56649] hover:scale-105 ${
                   pathname === item.href 
                     ? 'text-[#D56649] font-bold' 
