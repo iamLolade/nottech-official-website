@@ -6,21 +6,21 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-[calc(100vh-5rem)] flex items-center pt-16 sm:pt-20 overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-500">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/background/IMG_8048.jpeg"
           alt="Background Pattern"
           fill
-          className="object-cover opacity-10"
+          className="object-cover opacity-10 dark:opacity-5"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-white dark:from-gray-900/80 dark:to-gray-900"></div>
       </div>
 
-      <div className="container mx-auto px-4 z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -28,10 +28,10 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              <span className="text-primary-600">Redefining</span> the Future of Technology
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+              <span className="text-[#D56649]">Redefining</span> the Future of Technology
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
               At !Not Tech, we're pioneering innovative solutions that empower businesses,
               communities, and individuals across Africa. Transform your digital presence
               with our cutting-edge technology solutions.
@@ -85,24 +85,28 @@ export default function Hero() {
               />
             </div>
             
-            {/* Floating Elements */}
+            {/* Floating Logic Vector */}
             <motion.div
               animate={{
-                y: [0, -20, 0],
+                y: [0, -15, 15, 0],
+                x: [0, 10, -10, 0],
+                rotate: [0, 5, -5, 0],
               }}
               transition={{
-                duration: 4,
+                duration: 6,
                 repeat: Infinity,
                 repeatType: "reverse",
+                ease: "easeInOut",
               }}
-              className="absolute top-20 -left-10 w-20 h-20"
+              className="absolute bottom-0 right-0 w-28 h-28 md:w-36 md:h-36 translate-y-1/2 translate-x-1/4"
+              style={{ zIndex: 1 }}
             >
               <Image
-                src="/images/vector/undraw_artificial-intelligence_43qa.svg"
-                alt="AI Element"
-                width={80}
-                height={80}
-                className="opacity-70"
+                src="/images/vector/undraw_logic_bj1j.svg"
+                alt="Logic Flow"
+                width={144}
+                height={144}
+                className="opacity-80 transform rotate-12 dark:opacity-80"
               />
             </motion.div>
           </motion.div>
@@ -113,7 +117,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 text-center"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 lg:mt-20 text-center"
         >
           {[
             { number: '274+', label: 'Clients' },
@@ -121,9 +125,9 @@ export default function Hero() {
             { number: '1,364+', label: 'Support Hours' },
             { number: '18+', label: 'Team Members' },
           ].map((stat, index) => (
-            <div key={index} className="p-6 rounded-2xl bg-white/50 backdrop-blur-sm">
-              <h3 className="text-3xl font-bold text-primary-600 mb-2">{stat.number}</h3>
-              <p className="text-gray-600">{stat.label}</p>
+            <div key={index} className="p-4 sm:p-5 lg:p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#D56649] mb-1 sm:mb-2">{stat.number}</h3>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">{stat.label}</p>
             </div>
           ))}
         </motion.div>

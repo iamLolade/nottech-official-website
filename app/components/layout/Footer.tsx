@@ -4,7 +4,7 @@ import { NAV_ITEMS } from '@/app/constants/navigation';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50">
+    <footer className="bg-gray-50 dark:bg-gray-800 transition-colors duration-500">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
@@ -18,7 +18,7 @@ export default function Footer() {
                 className="h-10 w-auto"
               />
             </Link>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
               We're not just shaping the future, we're redefining it. We're committed to pioneering solutions
               that empower businesses, communities, and individuals across the continent.
             </p>
@@ -26,7 +26,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-gray-900 font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-gray-900 dark:text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
