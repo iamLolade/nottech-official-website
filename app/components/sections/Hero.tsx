@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center pt-16 sm:pt-20 overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-500">
+    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center pt-24 sm:pt-20 pb-12 sm:pb-16 lg:py-20 overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-500">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -28,7 +28,7 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
               <span className="text-[#D56649]">Redefining</span> the Future of Technology
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
@@ -36,7 +36,7 @@ export default function Hero() {
               communities, and individuals across Africa. Transform your digital presence
               with our cutting-edge technology solutions.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col xs:flex-row gap-4 justify-center lg:justify-start max-w-sm xs:max-w-none mx-auto lg:mx-0">
               <Link
                 href="/contact"
                 className="bg-[#D56649] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#c4573b] transition-all hover:scale-105 hover:shadow-lg inline-flex items-center justify-center gap-2 group"
@@ -117,7 +117,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 lg:mt-20"
+          className="relative z-10 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 lg:mt-20"
         >
           {[
             { 
@@ -143,7 +143,7 @@ export default function Hero() {
           ].map((stat, index) => (
             <motion.div
               key={index}
-              className="group relative p-6 sm:p-8 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-gray-100 dark:border-gray-700 transition-all duration-300 shadow-md hover:shadow-xl"
+              className="group relative p-4 xs:p-6 sm:p-8 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-gray-100 dark:border-gray-700 transition-all duration-300 shadow-md hover:shadow-xl"
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >

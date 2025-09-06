@@ -78,67 +78,91 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden relative z-10 p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-5 flex flex-col justify-between">
-              <span
-                className={`w-full h-0.5 bg-gray-800 transform transition-transform ${
-                  isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-                }`}
-              />
-              <span
-                className={`w-full h-0.5 bg-gray-800 transition-opacity ${
-                  isMobileMenuOpen ? 'opacity-0' : ''
-                }`}
-              />
-              <span
-                className={`w-full h-0.5 bg-gray-800 transform transition-transform ${
-                  isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                }`}
-              />
-            </div>
-          </button>
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            <button
+              className="relative z-10 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className="w-6 h-5 flex flex-col justify-between">
+                <span
+                  className={`w-full h-0.5 bg-gray-800 dark:bg-gray-200 transform transition-transform duration-300 ${
+                    isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                  }`}
+                />
+                <span
+                  className={`w-full h-0.5 bg-gray-800 dark:bg-gray-200 transition-opacity duration-300 ${
+                    isMobileMenuOpen ? 'opacity-0' : ''
+                  }`}
+                />
+                <span
+                  className={`w-full h-0.5 bg-gray-800 dark:bg-gray-200 transform transition-transform duration-300 ${
+                    isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
 
           {/* Mobile Menu */}
           <AnimatePresence>
             {isMobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, x: '100%' }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: '100%' }}
-                transition={{ type: 'tween', duration: 0.3 }}
-                className="fixed inset-0 bg-white z-0 md:hidden"
-              >
-                <div className="flex flex-col items-center justify-center h-full space-y-8">
-                  {NAV_ITEMS.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`text-xl transition-all hover:scale-105 ${
-                        pathname === item.href 
-                          ? 'text-primary-600 font-bold' 
-                          : 'text-gray-800 font-medium'
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                  <Link
-                    href="/contact"
-                    className="bg-primary-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-primary-700 transition-all hover:scale-105 hover:shadow-lg inline-flex items-center gap-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Get Started
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </Link>
-                </div>
-              </motion.div>
+              <>
+                {/* Backdrop */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                />
+                
+                {/* Menu */}
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ type: 'spring', duration: 0.5, bounce: 0.3 }}
+                  className="fixed top-[4.5rem] left-4 right-4 bg-white dark:bg-gray-800 rounded-2xl shadow-xl z-40 md:hidden border border-gray-200 dark:border-gray-700"
+                >
+                  <div className="flex flex-col p-6 space-y-4">
+                    {NAV_ITEMS.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={`text-lg transition-all px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 ${
+                          pathname === item.href 
+                            ? 'text-[#D56649] font-bold bg-[#D56649]/5' 
+                            : 'text-gray-800 dark:text-gray-200 font-medium'
+                        }`}
+                        onClick={(e) => {
+                          if (item.href.startsWith('/#')) {
+                            e.preventDefault();
+                            scrollToElement(item.href.substring(2));
+                          }
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                    <div className="pt-4 mt-4 border-t border-gray-100 dark:border-gray-700">
+                      <Link
+                        href="/contact"
+                        className="bg-[#D56649] text-white px-6 py-3 rounded-xl text-lg font-semibold hover:bg-[#c4573b] transition-all hover:shadow-lg inline-flex items-center gap-2 w-full justify-center"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Get Started
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              </>
             )}
           </AnimatePresence>
         </nav>
