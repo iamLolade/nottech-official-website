@@ -11,7 +11,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     title: 'Services',
-    href: '/services',
+    href: '/#services',
   },
   {
     title: 'Portfolio',
