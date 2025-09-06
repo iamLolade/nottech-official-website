@@ -32,7 +32,7 @@ export default function Hero() {
               <span className="text-[#D56649]">Redefining</span> the Future of Technology
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
-              At !Not Tech, we're pioneering innovative solutions that empower businesses,
+              At !Not Tech, we&apos;re pioneering innovative solutions that empower businesses,
               communities, and individuals across Africa. Transform your digital presence
               with our cutting-edge technology solutions.
             </p>

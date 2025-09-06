@@ -30,7 +30,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              We're not just shaping the future, we're redefining it. We're committed to pioneering solutions
+              We&apos;re not just shaping the future, we&apos;re redefining it. We&apos;re committed to pioneering solutions
               that empower businesses, communities, and individuals across the continent.
             </p>
           </div>

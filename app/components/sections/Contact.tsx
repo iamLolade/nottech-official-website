@@ -110,7 +110,7 @@ const ContactSection = () => {
             Contact <span className="text-[#D56649]">Us</span>
           </h2>
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            For inquiries, support, or feedback, kindly reach out to us. We're available through the following channels.
+            For inquiries, support, or feedback, kindly reach out to us. We&apos;re available through the following channels.
           </p>
         </motion.div>
 

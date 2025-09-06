@@ -67,7 +67,7 @@ const TeamSection = () => {
 
         {/* Team Grid */}
         <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {teamMembers.map((member, index) => (
+          {teamMembers.map((member) => (
             <motion.div
               key={member.name}
               className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"

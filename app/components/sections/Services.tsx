@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const ServiceCard = ({ 
   title, 
@@ -140,9 +141,9 @@ const ServicesSection = () => {
           className="mt-12 sm:mt-16 text-center"
         >
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
-            Looking for a custom solution? Let's discuss how we can help you achieve your goals.
+            Looking for a custom solution? Let&apos;s discuss how we can help you achieve your goals.
           </p>
-          <a
+          <Link
             href="/#contact"
             onClick={(e) => {
               e.preventDefault();
@@ -154,7 +155,7 @@ const ServicesSection = () => {
             <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
