@@ -8,11 +8,13 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_ITEMS } from '@/app/constants/navigation';
 import ThemeToggle from '../common/ThemeToggle';
+import { useActiveSection } from '@/app/hooks/useActiveSection';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const activeSection = useActiveSection();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +59,8 @@ export default function Header() {
                   }
                 }}
                 className={`text-medium font-semibold transition-all hover:text-[#D56649] hover:scale-105 ${
-                  pathname === item.href 
+                  (item.href.includes('#') && activeSection === item.href.split('#')[1]) ||
+                  (!item.href.includes('#') && pathname === item.href)
                     ? 'text-[#D56649] font-bold' 
                     : 'text-gray-700 dark:text-gray-200'
                 }`}
@@ -67,7 +70,11 @@ export default function Header() {
             ))}
             <ThemeToggle />
             <Link
-              href="/contact"
+              href="/#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="bg-[#D56649] text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-[#c4573b] transition-all hover:scale-105 hover:shadow-lg inline-flex items-center gap-2"
             >
               Get Started
@@ -133,9 +140,10 @@ export default function Header() {
                         key={item.href}
                         href={item.href}
                         className={`text-lg transition-all px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                          pathname === item.href 
-                            ? 'text-[#D56649] font-bold bg-[#D56649]/5' 
-                            : 'text-gray-800 dark:text-gray-200 font-medium'
+                        (item.href.includes('#') && activeSection === item.href.split('#')[1]) ||
+                        (!item.href.includes('#') && pathname === item.href)
+                          ? 'text-[#D56649] font-bold bg-[#D56649]/5' 
+                          : 'text-gray-800 dark:text-gray-200 font-medium'
                         }`}
                         onClick={(e) => {
                           if (item.href.startsWith('/#')) {
@@ -150,9 +158,13 @@ export default function Header() {
                     ))}
                     <div className="pt-4 mt-4 border-t border-gray-100 dark:border-gray-700">
                       <Link
-                        href="/contact"
+                        href="/#contact"
                         className="bg-[#D56649] text-white px-6 py-3 rounded-xl text-lg font-semibold hover:bg-[#c4573b] transition-all hover:shadow-lg inline-flex items-center gap-2 w-full justify-center"
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                          setIsMobileMenuOpen(false);
+                        }}
                       >
                         Get Started
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

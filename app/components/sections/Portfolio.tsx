@@ -37,11 +37,11 @@ const PortfolioSection = () => {
   );
 
   return (
-    <section id="portfolio" className="py-20 bg-white dark:bg-gray-900">
+    <section id="portfolio" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div 
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-3xl mx-auto text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -50,18 +50,18 @@ const PortfolioSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
             Our Featured <span className="text-[#D56649]">Projects</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Discover our flagship solutions that demonstrate our commitment to innovation
             and excellence in digital transformation.
           </p>
         </motion.div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
           {categories.map((category, index) => (
             <motion.button
               key={category}
-              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300
+              className={`px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300
                 ${activeCategory === category 
                   ? 'bg-[#D56649] text-white shadow-lg scale-105' 
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105'
@@ -78,20 +78,20 @@ const PortfolioSection = () => {
 
         {/* Projects Grid */}
         <motion.div 
-          className="grid md:grid-cols-2 gap-8"
+          className="grid sm:grid-cols-2 gap-6 sm:gap-8"
           layout
           transition={{ duration: 0.6 }}
         >
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              className="group bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
+              className="group bg-gray-50 dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="relative h-64 bg-gray-100 dark:bg-gray-700">
+              <div className="relative h-48 sm:h-56 md:h-64 bg-gray-100 dark:bg-gray-700">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -99,23 +99,23 @@ const PortfolioSection = () => {
                   className="object-contain p-8 dark:invert-0 transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
                     {project.title}
                   </h3>
-                  <span className="text-sm font-medium text-[#D56649] bg-[#D56649]/10 px-3 py-1 rounded-full">
+                  <span className="text-xs sm:text-sm font-medium text-[#D56649] bg-[#D56649]/10 px-2 sm:px-3 py-1 rounded-full">
                     {project.category}
                   </span>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, i) => (
                     <motion.span 
                       key={i}
-                      className="text-sm bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
+                      className="text-xs sm:text-sm bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 sm:px-3 py-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.2, delay: i * 0.1 }}
@@ -128,7 +128,7 @@ const PortfolioSection = () => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 rounded-lg bg-[#D56649]/10 text-[#D56649] hover:bg-[#D56649]/20 font-semibold transition-all duration-200 group/link"
+                  className="inline-flex items-center px-3 sm:px-4 py-2 rounded-lg bg-[#D56649]/10 text-[#D56649] hover:bg-[#D56649]/20 text-sm sm:text-base font-semibold transition-all duration-200 group/link"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

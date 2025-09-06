@@ -21,10 +21,10 @@ const ServiceCard = ({
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
+    className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
   >
     <motion.div 
-      className="relative h-32 mb-6 mx-auto max-w-[200px]"
+      className="relative h-28 sm:h-32 mb-4 sm:mb-6 mx-auto max-w-[180px] sm:max-w-[200px]"
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
@@ -40,7 +40,7 @@ const ServiceCard = ({
       {title}
     </h3>
     
-    <p className="text-gray-600 dark:text-gray-300 mb-6 text-center">
+    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 text-center">
       {description}
     </p>
     
@@ -105,7 +105,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900/50">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900/50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -113,19 +113,19 @@ const ServicesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-3xl mx-auto text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
             Our <span className="text-[#D56649]">Services</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             We offer a comprehensive range of technology solutions designed to transform 
             your business and drive success in the digital age.
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} index={index} />
           ))}
@@ -137,14 +137,18 @@ const ServicesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center"
         >
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
             Looking for a custom solution? Let's discuss how we can help you achieve your goals.
           </p>
           <a
-            href="#contact"
-            className="inline-flex items-center px-8 py-3 rounded-full bg-[#D56649] text-white font-semibold hover:bg-[#c4573b] transition-all duration-300 hover:shadow-lg"
+            href="/#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="inline-flex items-center px-6 sm:px-8 py-3 rounded-full bg-[#D56649] text-white text-sm sm:text-base font-semibold hover:bg-[#c4573b] transition-all duration-300 hover:shadow-lg"
           >
             Get Started
             <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

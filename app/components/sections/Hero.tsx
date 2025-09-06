@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center pt-24 sm:pt-20 pb-12 sm:pb-16 lg:py-20 overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-500">
+    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 lg:pb-20 overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-500">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -38,7 +38,11 @@ export default function Hero() {
             </p>
             <div className="flex flex-col xs:flex-row gap-4 justify-center lg:justify-start max-w-sm xs:max-w-none mx-auto lg:mx-0">
               <Link
-                href="/contact"
+                href="/#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="bg-[#D56649] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#c4573b] transition-all hover:scale-105 hover:shadow-lg inline-flex items-center justify-center gap-2 group"
               >
                 Get Started
@@ -52,7 +56,11 @@ export default function Hero() {
                 </svg>
               </Link>
               <Link
-                href="/portfolio"
+                href="/#portfolio"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="border-2 border-[#D56649] text-[#D56649] px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#D56649]/5 transition-all hover:scale-105 inline-flex items-center justify-center group"
               >
                 View Our Work
