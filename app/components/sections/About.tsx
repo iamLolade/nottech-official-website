@@ -56,7 +56,7 @@ const AboutSection = () => {
           ].map((item, index) => (
             <motion.div
               key={index}
-              className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg"
+              className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -86,7 +86,7 @@ const AboutSection = () => {
 
         {/* Bottom Feature */}
         <motion.div 
-          className="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-lg"
+          className="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -119,7 +119,7 @@ const AboutSection = () => {
                 ].map((point, index) => (
                   <motion.li
                     key={index}
-                    className="flex items-center text-gray-600 dark:text-gray-300"
+                    className="flex items-center text-gray-600 dark:text-gray-300 p-1 transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}

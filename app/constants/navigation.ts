@@ -15,7 +15,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     title: 'Portfolio',
-    href: '/portfolio',
+    href: '/#portfolio',
   },
   {
     title: 'Team',
