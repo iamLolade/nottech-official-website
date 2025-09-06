@@ -19,7 +19,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     title: 'Team',
-    href: '/team',
+    href: '/#team',
   },
   {
     title: 'Contact',
