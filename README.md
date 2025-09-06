@@ -2,8 +2,8 @@
 
 A modern, responsive website for !Not Tech Ltd, a leading software solutions company. Built with Next.js 14, TypeScript, and Tailwind CSS, featuring a beautiful dark/light theme and smooth animations.
 
-![Light Theme](public/images/background/light.png)
-![Dark Theme](public/images/background/dark.png)
+![Light Theme](/images/background/light.png)
+![Dark Theme](/images/background/dark.png)
 
 ## Features
 
