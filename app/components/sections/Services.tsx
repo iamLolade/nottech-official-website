@@ -23,6 +23,8 @@ const ServiceCard = ({
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
     className="bg-surface-light dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
+    role="article"
+    aria-labelledby={`service-title-${title.toLowerCase().replace(/\s+/g, '-')}`}
   >
     <motion.div 
       className="relative h-28 sm:h-32 mb-4 sm:mb-6 mx-auto max-w-[180px] sm:max-w-[200px]"
@@ -31,13 +33,14 @@ const ServiceCard = ({
     >
       <Image
         src={`/images/vector/${icon}`}
-        alt={title}
+        alt={`${title} service illustration`}
+        aria-hidden="true"
         fill
         className="object-contain dark:invert-0 transition-transform duration-300 group-hover:drop-shadow-lg"
       />
     </motion.div>
     
-    <h3 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
+    <h3 id={`service-title-${title.toLowerCase().replace(/\s+/g, '-')}`} className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
       {title}
     </h3>
     
@@ -45,7 +48,7 @@ const ServiceCard = ({
       {description}
     </p>
     
-    <ul className="space-y-3">
+    <ul className="space-y-3" aria-label={`Features of ${title}`}>
       {features.map((feature, idx) => (
         <motion.li
           key={idx}
@@ -55,7 +58,7 @@ const ServiceCard = ({
           transition={{ duration: 0.3, delay: index * 0.1 + idx * 0.1 }}
           className="flex items-start space-x-2 text-gray-600 dark:text-gray-300 p-1 transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg"
         >
-          <svg className="w-5 h-5 mt-1 flex-shrink-0 text-brand-secondary group-hover:text-brand-primary transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-5 h-5 mt-1 flex-shrink-0 text-brand-secondary group-hover:text-brand-primary transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>{feature}</span>
@@ -150,6 +153,8 @@ const ServicesSection = () => {
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="inline-flex items-center px-6 sm:px-8 py-3 rounded-full bg-[#D56649] text-white text-sm sm:text-base font-semibold hover:bg-[#c4573b] transition-all duration-300 hover:shadow-lg"
+            role="button"
+            aria-label="Get Started - Contact us to discuss your custom solution"
           >
             Get Started
             <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

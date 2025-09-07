@@ -94,7 +94,8 @@ const PortfolioSection = () => {
               <div className="relative h-48 sm:h-56 md:h-64 bg-gray-100 dark:bg-gray-700">
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} - ${project.category}`}
+                  aria-label={`Illustration for ${project.title}, our ${project.category.toLowerCase()} solution: ${project.description}`}
                   fill
                   className="object-contain p-8 dark:invert-0 transition-transform duration-300 group-hover:scale-105"
                 />

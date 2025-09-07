@@ -11,7 +11,8 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/background/IMG_8048.jpeg"
-          alt="Background Pattern"
+          alt="Abstract technology pattern background"
+          aria-hidden="true"
           fill
           className="object-cover opacity-10 dark:opacity-5"
           priority
@@ -31,7 +32,7 @@ export default function Hero() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
               <span className="text-[#D56649]">Redefining</span> the Future of Technology
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-brand-secondary/90 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
               At !Not Tech, we&apos;re pioneering innovative solutions that empower businesses,
               communities, and individuals across Africa. Transform your digital presence
               with our cutting-edge technology solutions.
@@ -86,7 +87,8 @@ export default function Hero() {
             <div className="relative h-[300px] md:h-[400px]">
               <Image
                 src="/images/vector/undraw_vibe-coding_mjme.svg"
-                alt="Technology Innovation"
+                alt="Software developer working on innovative technology solutions"
+                aria-label="Illustration of a developer coding, representing !Not Tech's innovative approach to software development"
                 fill
                 className="object-contain"
                 priority
@@ -111,7 +113,8 @@ export default function Hero() {
             >
               <Image
                 src="/images/vector/undraw_logic_bj1j.svg"
-                alt="Logic Flow"
+                alt="Floating logic diagram illustration"
+                aria-label="Animated floating illustration representing logical thinking and problem-solving approach"
                 width={144}
                 height={144}
                 className="opacity-80 transform rotate-12 dark:opacity-80"

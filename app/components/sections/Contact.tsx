@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface FormData {
@@ -29,6 +29,20 @@ const ContactSection = () => {
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  // Check if all required fields are filled and valid
+  useEffect(() => {
+    const { name, email, subject, message } = formData;
+    const hasAllFields = name.trim().length >= 2 && 
+                        email.trim().length >= 5 && 
+                        subject.trim().length >= 3 && 
+                        message.trim().length >= 10;
+    const hasNoErrors = !Object.values(errors).some(error => error !== undefined);
+    const isValid = hasAllFields && hasNoErrors;
+    
+    setIsFormValid(isValid);
+  }, [formData, errors]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,10 +97,12 @@ const ContactSection = () => {
 
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }));
-    }
+    // Validate field as user types
+    const error = validateField(name, value);
+    setErrors(prev => ({
+      ...prev,
+      [name]: error
+    }));
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -179,9 +195,14 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              onSubmit={handleSubmit} 
+              className="space-y-6"
+              role="form"
+              aria-label="Contact form"
+              noValidate>
               <div>
-                <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2">
+                <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-800 dark:text-gray-200 mb-1.5 sm:mb-2">
                   Your Name
                 </label>
                 <input
@@ -192,6 +213,9 @@ const ContactSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   required
+                  aria-required="true"
+                  aria-invalid={errors.name ? "true" : "false"}
+                  aria-describedby={errors.name ? "name-error" : undefined}
                   className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-surface-muted dark:bg-gray-800 border transition-colors duration-200
                     ${errors.name 
                       ? 'border-red-300 dark:border-red-700 focus:ring-red-500' 
@@ -199,12 +223,12 @@ const ContactSection = () => {
                     } focus:outline-none focus:ring-2 focus:border-transparent`}
                 />
                 {errors.name && (
-                  <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.name}</p>
+                  <p id="name-error" role="alert" className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.name}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2">
+                <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-800 dark:text-gray-200 mb-1.5 sm:mb-2">
                   Your Email
                 </label>
                 <input
@@ -215,6 +239,10 @@ const ContactSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   required
+                  aria-required="true"
+                  aria-invalid={errors.email ? "true" : "false"}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                  autoComplete="email"
                   className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-surface-muted dark:bg-gray-800 border transition-colors duration-200
                     ${errors.email 
                       ? 'border-red-300 dark:border-red-700 focus:ring-red-500' 
@@ -222,12 +250,12 @@ const ContactSection = () => {
                     } focus:outline-none focus:ring-2 focus:border-transparent`}
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.email}</p>
+                  <p id="email-error" role="alert" className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.email}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2">
+                <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-gray-800 dark:text-gray-200 mb-1.5 sm:mb-2">
                   Subject
                 </label>
                 <input
@@ -238,6 +266,9 @@ const ContactSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   required
+                  aria-required="true"
+                  aria-invalid={errors.subject ? "true" : "false"}
+                  aria-describedby={errors.subject ? "subject-error" : undefined}
                   className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-surface-muted dark:bg-gray-800 border transition-colors duration-200
                     ${errors.subject 
                       ? 'border-red-300 dark:border-red-700 focus:ring-red-500' 
@@ -245,12 +276,12 @@ const ContactSection = () => {
                     } focus:outline-none focus:ring-2 focus:border-transparent`}
                 />
                 {errors.subject && (
-                  <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.subject}</p>
+                  <p id="subject-error" role="alert" className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.subject}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2">
+                <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-800 dark:text-gray-200 mb-1.5 sm:mb-2">
                   Message
                 </label>
                 <div className="relative">
@@ -262,27 +293,40 @@ const ContactSection = () => {
                     onBlur={handleBlur}
                     required
                     rows={6}
+                    aria-required="true"
+                    aria-invalid={errors.message ? "true" : "false"}
+                    aria-describedby={errors.message ? "message-error message-length" : "message-length"}
                     className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-surface-muted dark:bg-gray-800 border transition-colors duration-200
                       ${errors.message 
                         ? 'border-red-300 dark:border-red-700 focus:ring-red-500' 
                         : 'border-gray-200 dark:border-gray-700 focus:ring-[#D56649]'
                       } focus:outline-none focus:ring-2 focus:border-transparent min-h-[150px]`}
                   />
-                  <div className="absolute bottom-2.5 sm:bottom-3 right-2.5 sm:right-3 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                    {formData.message.length}/{MAX_MESSAGE_LENGTH}
+                  <div 
+                    id="message-length"
+                    className="absolute bottom-2.5 sm:bottom-3 right-2.5 sm:right-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300"
+                    aria-live="polite"
+                  >
+                    {formData.message.length}/{MAX_MESSAGE_LENGTH} characters
                   </div>
                 </div>
                 {errors.message && (
-                  <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.message}</p>
+                  <p id="message-error" role="alert" className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.message}</p>
                 )}
               </div>
 
               <motion.button
                 type="submit"
-                disabled={status === 'submitting'}
-                className={`w-full px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-[#D56649] text-white text-sm sm:text-base font-semibold shadow-lg 
-                  ${status === 'submitting' ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#D56649]/90'} 
-                  transition-all duration-200`}
+                disabled={!isFormValid || status === 'submitting'}
+                className={`w-full px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-white text-sm sm:text-base font-semibold shadow-lg transition-all duration-200
+                  ${!isFormValid 
+                    ? 'bg-[#D56649] opacity-40 cursor-not-allowed'
+                    : status === 'submitting'
+                      ? 'bg-[#D56649] opacity-70 cursor-not-allowed'
+                      : 'bg-[#D56649] hover:bg-[#D56649]/90'
+                  }`}
+                aria-busy={status === 'submitting'}
+                aria-disabled={!isFormValid || status === 'submitting'}
                 whileHover={{ scale: status === 'submitting' ? 1 : 1.02 }}
                 whileTap={{ scale: status === 'submitting' ? 1 : 0.98 }}
               >
@@ -306,7 +350,9 @@ const ContactSection = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-center"
+                  className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 text-center"
+                  role="status"
+                  aria-live="polite"
                 >
                   Your message has been sent. Thank you!
                 </motion.div>
@@ -316,7 +362,9 @@ const ContactSection = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-center"
+                  className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 text-center"
+                  role="alert"
+                  aria-live="assertive"
                 >
                   There was an error sending your message. Please try again.
                 </motion.div>

@@ -33,9 +33,16 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <nav className="flex items-center justify-between">
+        <nav className="flex items-center justify-between" role="navigation" aria-label="Main navigation">
           {/* Logo */}
-          <Link href="/" className="relative z-10 flex-shrink-0">
+          <Link 
+            href="/#home" 
+            className="relative z-10 flex-shrink-0" 
+            aria-label="Return to homepage"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+            }}>
             <Image
               src="/images/company-assets/nottech_logo_long.png"
               alt="!Not Tech Logo"
@@ -47,7 +54,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-3 lg:space-x-6">
+          <div className="hidden md:flex items-center space-x-3 lg:space-x-6" role="menubar">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
@@ -58,6 +65,13 @@ export default function Header() {
                     scrollToElement(item.href.substring(2));
                   }
                 }}
+                role="menuitem"
+                aria-current={
+                  (item.href.includes('#') && activeSection === item.href.split('#')[1]) ||
+                  (!item.href.includes('#') && pathname === item.href)
+                    ? 'page'
+                    : undefined
+                }
                 className={`text-medium font-semibold transition-all hover:text-[#D56649] hover:scale-105 ${
                   (item.href.includes('#') && activeSection === item.href.split('#')[1]) ||
                   (!item.href.includes('#') && pathname === item.href)
@@ -76,6 +90,8 @@ export default function Header() {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
               className="bg-[#D56649] text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-[#c4573b] transition-all hover:scale-105 hover:shadow-lg inline-flex items-center gap-2"
+              role="button"
+              aria-label="Get Started - Contact Us"
             >
               Get Started
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -123,6 +139,7 @@ export default function Header() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
                   className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+                  aria-hidden="true"
                   onClick={() => setIsMobileMenuOpen(false)}
                 />
                 
@@ -133,6 +150,9 @@ export default function Header() {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ type: 'spring', duration: 0.5, bounce: 0.3 }}
                   className="fixed top-[4.5rem] left-4 right-4 bg-surface-light dark:bg-gray-800 rounded-2xl shadow-xl z-40 md:hidden border border-gray-200 dark:border-gray-700"
+                  role="dialog"
+                  aria-label="Mobile menu"
+                  aria-modal="true"
                 >
                   <div className="flex flex-col p-6 space-y-4">
                     {NAV_ITEMS.map((item) => (

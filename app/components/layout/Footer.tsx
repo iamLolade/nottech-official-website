@@ -20,7 +20,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <Link href="/" className="block mb-6 transition-opacity hover:opacity-80">
+            <Link 
+              href="/#home" 
+              className="block mb-6 transition-opacity hover:opacity-80"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+              }}>
               <Image
                 src="/images/company-assets/nottech_logo_long.png"
                 alt="!Not Tech Logo"
