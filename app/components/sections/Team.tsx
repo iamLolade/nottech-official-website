@@ -45,7 +45,7 @@ const teamMembers = [
 
 const TeamSection = () => {
   return (
-    <section id="team" className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900/50">
+    <section id="team" className="py-12 sm:py-16 lg:py-20 bg-surface-muted dark:bg-gray-900/50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div 
@@ -58,7 +58,7 @@ const TeamSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
             Meet Our <span className="text-[#D56649]">Team</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-brand-secondary/90 dark:text-gray-300 max-w-2xl mx-auto">
             Meet the dedicated professionals driving innovation at !NotTech Ltd. Our team is comprised 
             of skilled experts committed to delivering exceptional technology solutions and ensuring 
             client success.
@@ -70,7 +70,7 @@ const TeamSection = () => {
           {teamMembers.map((member) => (
             <motion.div
               key={member.name}
-              className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
+              className="group relative bg-surface-light dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

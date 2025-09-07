@@ -22,7 +22,7 @@ const ServiceCard = ({
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
+    className="bg-surface-light dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
   >
     <motion.div 
       className="relative h-28 sm:h-32 mb-4 sm:mb-6 mx-auto max-w-[180px] sm:max-w-[200px]"
@@ -55,7 +55,7 @@ const ServiceCard = ({
           transition={{ duration: 0.3, delay: index * 0.1 + idx * 0.1 }}
           className="flex items-start space-x-2 text-gray-600 dark:text-gray-300 p-1 transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg"
         >
-          <svg className="w-5 h-5 mt-1 flex-shrink-0 text-[#D56649]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-5 h-5 mt-1 flex-shrink-0 text-brand-secondary group-hover:text-brand-primary transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>{feature}</span>
@@ -106,7 +106,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900/50">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 bg-surface-muted dark:bg-gray-900/50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -119,7 +119,7 @@ const ServicesSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
             Our <span className="text-[#D56649]">Services</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-brand-secondary/90 dark:text-gray-300 max-w-2xl mx-auto">
             We offer a comprehensive range of technology solutions designed to transform 
             your business and drive success in the digital age.
           </p>

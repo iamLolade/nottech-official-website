@@ -37,7 +37,7 @@ const PortfolioSection = () => {
   );
 
   return (
-    <section id="portfolio" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900">
+    <section id="portfolio" className="py-12 sm:py-16 lg:py-20 bg-surface-light dark:bg-gray-900">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div 
@@ -50,7 +50,7 @@ const PortfolioSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
             Our Featured <span className="text-[#D56649]">Projects</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-brand-secondary/90 dark:text-gray-300 max-w-2xl mx-auto">
             Discover our flagship solutions that demonstrate our commitment to innovation
             and excellence in digital transformation.
           </p>
@@ -64,7 +64,7 @@ const PortfolioSection = () => {
               className={`px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300
                 ${activeCategory === category 
                   ? 'bg-[#D56649] text-white shadow-lg scale-105' 
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105'
+                  : 'bg-brand-secondary/5 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-secondary/10 dark:hover:bg-gray-700 hover:scale-105'
                 }`}
               onClick={() => setActiveCategory(category)}
               initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ const PortfolioSection = () => {
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              className="group bg-gray-50 dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
+              className="group bg-surface-muted dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

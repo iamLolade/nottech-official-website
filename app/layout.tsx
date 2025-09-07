@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   title: "!Not Tech | Innovative Software Solutions",
   description: "At !Not Tech, we're not just shaping the future; we're redefining it. We pioneer solutions that empower businesses, communities, and individuals across Africa.",
   icons: {
-    icon: '/images/company-assets/nottech_favicon_square.png',
-    apple: '/images/company-assets/nottech_favicon_square.png',
+    icon: '/icon.png',
+    apple: '/icon.png',
   },
 };
 
@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider 
           attribute="class" 
-          defaultTheme="light" 
+          defaultTheme="dark" 
           enableSystem={false}
           disableTransitionOnChange={false}
         >

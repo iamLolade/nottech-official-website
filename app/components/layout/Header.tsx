@@ -28,7 +28,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm dark:shadow-gray-800' 
+          ? 'bg-surface-light/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm dark:shadow-gray-800' 
           : 'bg-transparent'
       }`}
     >
@@ -132,7 +132,7 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ type: 'spring', duration: 0.5, bounce: 0.3 }}
-                  className="fixed top-[4.5rem] left-4 right-4 bg-white dark:bg-gray-800 rounded-2xl shadow-xl z-40 md:hidden border border-gray-200 dark:border-gray-700"
+                  className="fixed top-[4.5rem] left-4 right-4 bg-surface-light dark:bg-gray-800 rounded-2xl shadow-xl z-40 md:hidden border border-gray-200 dark:border-gray-700"
                 >
                   <div className="flex flex-col p-6 space-y-4">
                     {NAV_ITEMS.map((item) => (

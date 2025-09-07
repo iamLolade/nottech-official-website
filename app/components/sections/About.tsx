@@ -11,7 +11,7 @@ const fadeIn = {
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900/50">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-surface-muted dark:bg-gray-900/50">
       <div className="container mx-auto px-4">
         {/* Main About */}
         <motion.div 
@@ -24,7 +24,7 @@ const AboutSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
             Welcome to <span className="text-[#D56649]">!Not Tech Ltd</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-brand-secondary/90 dark:text-gray-300 max-w-2xl mx-auto">
             An Africa-based technology startup founded in 2022, committed to revolutionizing 
             the digital landscape. Our passionate team of tech enthusiasts combines deep local 
             market insights with a vision to empower businesses and individuals through 
@@ -56,7 +56,7 @@ const AboutSection = () => {
           ].map((item, index) => (
             <motion.div
               key={index}
-              className="relative bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
+              className="relative bg-surface-light dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -86,7 +86,7 @@ const AboutSection = () => {
 
         {/* Bottom Feature */}
         <motion.div 
-          className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
+          className="bg-surface-light dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 shadow-lg hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 dark:hover:border-gray-700"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

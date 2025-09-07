@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 lg:pb-20 overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-500">
+    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 lg:pb-20 overflow-hidden bg-surface-light dark:bg-gray-900 transition-colors duration-500">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -31,7 +31,7 @@ export default function Hero() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
               <span className="text-[#D56649]">Redefining</span> the Future of Technology
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg md:text-xl text-brand-secondary/90 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
               At !Not Tech, we&apos;re pioneering innovative solutions that empower businesses,
               communities, and individuals across Africa. Transform your digital presence
               with our cutting-edge technology solutions.
@@ -151,7 +151,7 @@ export default function Hero() {
           ].map((stat, index) => (
             <motion.div
               key={index}
-              className="group relative p-4 xs:p-6 sm:p-8 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-gray-100 dark:border-gray-700 transition-all duration-300 shadow-md hover:shadow-xl"
+              className="group relative p-4 xs:p-6 sm:p-8 rounded-2xl bg-surface-light/90 dark:bg-gray-800/80 backdrop-blur-md border border-gray-100 dark:border-gray-700 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-brand-secondary/10 hover:border-brand-secondary/20"
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
@@ -164,7 +164,7 @@ export default function Hero() {
                 >
                   {stat.number}
                 </motion.h3>
-                <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-1 tracking-wide">
+                <p className="text-lg sm:text-xl font-bold text-brand-secondary dark:text-white mb-1 tracking-wide group-hover:text-brand-secondary-light transition-colors duration-300">
                   {stat.label}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 opacity-70 group-hover:opacity-90 transition-opacity">

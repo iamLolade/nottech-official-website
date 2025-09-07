@@ -96,7 +96,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-surface-light dark:bg-gray-900">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div 
@@ -109,7 +109,7 @@ const ContactSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
             Contact <span className="text-[#D56649]">Us</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-brand-secondary/90 dark:text-gray-300 max-w-2xl mx-auto">
             For inquiries, support, or feedback, kindly reach out to us. We&apos;re available through the following channels.
           </p>
         </motion.div>
@@ -192,7 +192,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   required
-                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border transition-colors duration-200
+                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-surface-muted dark:bg-gray-800 border transition-colors duration-200
                     ${errors.name 
                       ? 'border-red-300 dark:border-red-700 focus:ring-red-500' 
                       : 'border-gray-200 dark:border-gray-700 focus:ring-[#D56649]'
@@ -215,7 +215,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   required
-                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border transition-colors duration-200
+                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-surface-muted dark:bg-gray-800 border transition-colors duration-200
                     ${errors.email 
                       ? 'border-red-300 dark:border-red-700 focus:ring-red-500' 
                       : 'border-gray-200 dark:border-gray-700 focus:ring-[#D56649]'
@@ -238,7 +238,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   required
-                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border transition-colors duration-200
+                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-surface-muted dark:bg-gray-800 border transition-colors duration-200
                     ${errors.subject 
                       ? 'border-red-300 dark:border-red-700 focus:ring-red-500' 
                       : 'border-gray-200 dark:border-gray-700 focus:ring-[#D56649]'
@@ -262,7 +262,7 @@ const ContactSection = () => {
                     onBlur={handleBlur}
                     required
                     rows={6}
-                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border transition-colors duration-200
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-surface-muted dark:bg-gray-800 border transition-colors duration-200
                       ${errors.message 
                         ? 'border-red-300 dark:border-red-700 focus:ring-red-500' 
                         : 'border-gray-200 dark:border-gray-700 focus:ring-[#D56649]'
