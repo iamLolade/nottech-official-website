@@ -15,7 +15,8 @@ const teamMembers = [
   {
     name: 'Wilfred Ighalo',
     role: 'Chief Operations Officer',
-    image: '/images/company-assets/wilfred-1.jfif',
+    image: '/images/company-assets/wilfred_headshot.jpeg',
+    linkedin: 'https://www.linkedin.com/in/wilfred-ighalo-a0374a91',
     delay: 0.2
   },
   {
@@ -36,6 +37,7 @@ const teamMembers = [
     name: 'Ewele Val-Okenyi',
     role: 'Secretary/Head of Admin Ops',
     image: '/images/company-assets/val.jpg',
+    linkedin: 'https://www.linkedin.com/in/eweleval/',
     delay: 0.5
   },
   {
