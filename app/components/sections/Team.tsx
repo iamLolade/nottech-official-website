@@ -93,7 +93,7 @@ const TeamSection = () => {
                   alt={`${member.name} - ${member.role}`}
                   aria-label={`Profile photo of ${member.name}, ${member.role} at !Not Tech${member.linkedin ? '. Click to view LinkedIn profile' : ''}`}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:opacity-90"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105 group-hover:opacity-90"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
